@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Client Satisfaction Report</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    h2, h3 {
+      margin-bottom: 5px;
+      text-align: center;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    th, td {
+      border: 1px solid #000;
+      padding: 6px;
+      text-align: center;
+    }
+    th {
+      background-color: #c4dbfc;
+      color: rgb(0, 0, 0);
+    }
+    /* Only the first 4 th[rowspan="5"] will have white background */
+    th[rowspan="5"] {
+      background-color: white;
+      color: black;
+    }
+    .section-header {
+      background-color: #fbb065;
+      font-weight: bold;
+      text-align: left;
+      color: rgb(0, 0, 0);
+    }
+    /* Navbar styling */
+    nav {
+      background-color: #ffffff; /* White background */
+      border-bottom: 3px solid #fbb065; /* Orange border */
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    nav ul li {
+      margin: 0 20px;
+      position: relative;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #007bff; /* Blue color */
+      font-weight: bold;
+      font-size: 16px;
+      padding: 10px 20px;
+      display: block;
+      transition: all 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background-color: #fbb065; /* Orange background on hover */
+      color: #ffffff; /* White text on hover */
+      border-radius: 5px;
+      transform: scale(1.1); /* Slight zoom effect on hover */
+    }
+
+    nav ul li a.active {
+      background-color: #007bff; /* Blue background for active link */
+      color: #ffffff; /* White text for active link */
+      border-radius: 5px;
+    }
+    /* Ensure input fields have a transparent background */
+    td input {
+      width: 100%;
+      border: none;
+      text-align: center;
+      font-size: 14px;
+      font-family: inherit;
+      background-color: transparent;
+    }
+    td input:focus {
+      outline: none;
+      background-color: #c4dbfc;
+    }
+    /* Apply solid yellow background to the "Number" and "%" columns (including those under "knows and saw CC") */
+    td:nth-child(n+6) {
+      background-color: #c4dbfc;
+    }
+    /* Apply white background for columns under "Number of Clients", "Volume of Transactions", etc. */
+    td:nth-child(2), td:nth-child(3), td:nth-child(4), td:nth-child(5) {
+      background-color: white;
+    }
+    /* Apply yellow background for "knows and saw CC" section */
+    td:nth-child(5), :nth-child(6), td:nth-child(7), td:nth-child(8), td:nth-child(9), td:nth-child(10), td:nth-child(11) {
+      background-color: #c4dbfc;
+    }
+    .wide-percent {
+      width: 70px;
+    }
+    .total-row td {
+      background-color: #fbb065;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+          <li><a href="index.html" class="active">Survey Page</a></li>
+          <li><a href="Citezen.html">CC1</a></li>
+          <li><a href="Citezen2.html">CC2</a></li>
+          <li><a href="Citezen3.html">CC3</a></li>
+          <li><a href="CSMR.html">SQD0-1</a></li>
+          <li><a href="CSMR2.html">SQD2-3</a></li>
+          <li><a href="CSMR3.html">SQD4-5</a></li>
+          <li><a href="CSMR4.html">SQD6-7</a></li>
+          <li><a href="CSMR5.html">SQD8</a></li>
+        </ul>
+      </nav>
+
+  <h2>PIASO</h2>
+  <h3>CLIENT SATISFACTION MEASUREMENT REPORT<br>4th QUARTER</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="5"></th>
+        <th rowspan="5">Number of<br>Clients<br>(A)</th>
+        <th rowspan="5">Volume of<br>Transactions<br>(B)</th>
+        <th rowspan="5">Total Number<br>of<br>Respondents<br>(C)</th>
+        <th colspan="18">Citizen's Charter</th>
+      </tr>
+      <tr>
+        <th colspan="18">CC3 - Helpfulness of PGQ CC<br>(F)</th>
+      </tr>
+      <tr>
+        <th colspan="2">Helped very much</th>
+        <th colspan="2">Somewhat helped</th>
+        <th colspan="2">Did not helped</th>
+        <th colspan="2">N/A</th>
+      </tr>
+      <tr>
+        <th>Number</th><th class="wide-percent">%</th>
+        <th>Number</th><th class="wide-percent">%</th>
+        <th>Number</th><th class="wide-percent">%</th>
+        <th>Number</th><th class="wide-percent">%</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="section-header" colspan="19">Internal Service/s</td></tr>
+      <tr>
+        <td>Signature</td>
+        <td><input /></td><td><input /></td><td><input /></td>
+        <td><input /></td><td><input /></td><td><input /></td>
+        <td><input /></td><td><input /></td><td><input /></td>
+        <td><input /></td><td><input /></td>
+      </tr>
+      <tr>
+        <td>Receiving</td>
+        <td><input /></td><td><input /></td><td><input /></td>
+        <td><input /></td><td><input /></td><td><input /></td>
+        <td><input /></td><td><input /></td><td><input /></td>
+        <td><input /></td><td><input /></td>
+      </tr>
+      <tr class="total-row">
+        <td><b>Total</b></td>
+        <td><input /></td><td><input /></td><td><input /></td>
+        <td><input /></td><td><input /></td><td><input /></td>
+        <td><input /></td><td><input /></td><td><input /></td>
+        <td><input /></td><td><input /></td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>

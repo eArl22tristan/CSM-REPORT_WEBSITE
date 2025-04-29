@@ -1,0 +1,135 @@
+:root {
+  --blue: #000000;
+  --orange: #fb913b;
+  --light-blue: #e7f1ff;
+  --light-orange: #fff3e6;
+  --lighter-orange: #ffe6cc;
+}
+
+body {
+  background-color: var(--light-blue);
+}
+
+h2, h4, h5 {
+  color: var(--blue);
+}
+
+.form-control, .form-select {
+  border: 1px solid var(--blue);
+}
+
+/* 🔶 Enhanced Dropdown Styles */
+select.form-select {
+  border-radius: 0.5rem;
+  border: 1px solid var(--blue);
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+  background-color: white;
+  box-shadow: none;
+}
+
+select.form-select:hover {
+  border-color: var(--orange);
+  background-color: var(--light-orange);
+  cursor: pointer;
+}
+
+select.form-select:focus {
+  border-color: var(--orange);
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(253, 126, 20, 0.25);
+}
+
+/* Label style for consistency */
+label {
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 0.25rem;
+}
+
+.btn-primary {
+  background-color: var(--orange);
+  border-color: var(--orange);
+}
+
+.btn-primary:hover {
+  background-color: #e36400;
+  border-color: #e36400;
+}
+
+.shadow {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.bg-white {
+  background-color: white;
+}
+
+#surveyForm {
+  border-top: 4px solid var(--orange);
+}
+
+#stats {
+  border-top: 4px solid var(--blue);
+}
+
+.orange-header {
+  background-color: #f89839 !important;
+  color: white !important;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: var(--lighter-orange);
+}
+
+.no-print {
+  display: inline-block;
+}
+
+.mt-4 {
+  text-align: center;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Add to your style.css */
+.orange-header {
+  background-color: var(--orange) !important; /* Ensures orange background */
+  color: white !important; /* Ensures white text */
+}
+
+/* ============================= */
+/*         PRINT STYLING        */
+/* ============================= */
+@media print {
+  body {
+    background-color: white;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  #surveyForm {
+    display: none;
+  }
+
+  #stats {
+    border: 2px solid var(--blue);
+    background-color: #f8faff !important;
+    padding: 1.5rem;
+    border-radius: 8px;
+  }
+
+  .table-warning, .table thead, th {
+    background-color: #f89839 !important;
+    color: white !important;
+  }
+
+  .btn {
+    display: none;
+  }
+
+}
