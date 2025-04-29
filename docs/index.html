@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer Satisfaction Survey</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer Satisfaction Survey</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+  <style>
+    th,
+    .section-header {
+      background-color: #fbb065 !important; /* Orange */
+      color: rgb(255, 255, 255) !important;
+    }
+
+    .section-header {
+      font-weight: bold;
+      padding: 8px;
+    }
+
+    .disaggregation-cell {
+      background-color: #fbb065 !important; /* Orange */
+      font-weight: bold;
+      color: white !important; /* optional: para mas visible */
+    }
+
+    /* Navbar styling */
+    nav {
+      background-color: #ffffff; /* White background */
+      border-bottom: 3px solid #fbb065; /* Orange border */
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    nav ul li {
+      margin: 0 20px;
+      position: relative;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #007bff; /* Blue color */
+      font-weight: bold;
+      font-size: 16px;
+      padding: 10px 20px;
+      display: block;
+      transition: all 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background-color: #fbb065; /* Orange background on hover */
+      color: #ffffff; /* White text on hover */
+      border-radius: 5px;
+      transform: scale(1.1); /* Slight zoom effect on hover */
+    }
+
+    nav ul li a.active {
+      background-color: #007bff; /* Blue background for active link */
+      color: #ffffff; /* White text for active link */
+      border-radius: 5px;
+    }
+
+    /* Media queries for responsiveness */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul li {
+        margin: 10px 0;
+      }
+    }
+
+    /* Other existing styles */
+    @media print {
+      @page {
+        size: landscape;
+        margin: 1cm;
+      }
+
+      body {
+        font-family: 'Segoe UI', sans-serif;
+        font-size: 9pt;
+        line-height: 1.2;
+        margin: 0;
+        padding: 0;
+        background-color: white;
+      }
+
+      #surveyForm,
+      .no-print,
+      .btn {
+        display: none !important;
+      }
+
+      #stats {
+        background-color: white !important;
+        padding: 0;
+        border: none;
+      }
+
+      #demographicSection,
+      #ccSection {
+        page-break-after: always;
+      }
+
+      #sqdSection {
+        page-break-after: auto;
+      }
+
+      table, thead, tbody, tr, td, th {
+        page-break-inside: avoid;
+        border-collapse: collapse !important;
+        font-size: 8pt;
+      }
+
+      /* General table styling */
+      .table {
+        font-size: 8.5pt;
+        margin-bottom: 0.4rem;
+      }
+
+      /* Headings */
+      h2, h4, h5 {
+        font-size: 11pt;
+        margin: 0.3rem 0 0.2rem;
+        color: black !important;
+      }
+
+      /* Table Head Styling */
+      .table thead,
+      .table-warning,
+      .orange-header {
+        background-color: #f89839 !important;
+        color: white !important;
+      }
+
+      th, td {
+        padding: 3px 5px;
+        text-align: center;
+        word-break: break-word;
+      }
+
+      th:first-child, td:first-child {
+        width: 32%;
+        text-align: left;
+      }
+
+      /* Demographic Section */
+      #demographicSection .table,
+      #ccSection .table {
+        font-size: 11pt !important;
+      }
+
+      #demographicSection th,
+      #demographicSection td,
+      #ccSection th,
+      #ccSection td {
+        padding: 5px 8px !important;
+      }
+
+      /* SQD Section Specific */
+      #sqdSection .table {
+        width: 105%;
+        max-width: 20cm;
+        table-layout: fixed;
+      }
+
+      #sqdSection th,
+      #sqdSection td {
+        font-size: 5pt;
+        padding: 1px 2px;
+        word-break: break-all;
+        white-space: normal;
+        vertical-align: middle;
+        text-align: center;
+      }
+
+      #sqdSection th:first-child,
+      #sqdSection td:first-child {
+        text-align: left;
+        width: 25%;
+      }
+
+      #sqdSection th {
+        white-space: nowrap;
+      }
+
+      /* Category Group Highlight */
+      .category-group {
+        background-color: #faca9b !important;
+        color: white !important;
+        font-size: 11pt !important;
+        font-weight: bold;
+        vertical-align: middle;
+        text-align: left !important;
+        padding-left: 6px !important;
+      }
+
+      /* Compact table cells for .table-sm */
+      .table-sm td,
+      .table-sm th {
+        padding: 0.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <ul>
+      <li><a href="index.html" class="active">Survey Page</a></li>
+      <li><a href="Citezen.html">CC1</a></li>
+      <li><a href="Citezen2.html">CC2</a></li>
+      <li><a href="Citezen3.html">CC3</a></li>
+      <li><a href="CSMR.html">SQD0-1</a></li>
+      <li><a href="CSMR2.html">SQD2-3</a></li>
+      <li><a href="CSMR3.html">SQD4-5</a></li>
+      <li><a href="CSMR4.html">SQD6-7</a></li>
+      <li><a href="CSMR5.html">SQD8</a></li>
+    </ul>
+  </nav>
+</body>
+</html>
+</head>
+<body class="bg-light">
+  <div class="container py-4">
+    <h2 class="text-center mb-4">Customer Satisfaction Survey</h2>
+
+    <form id="surveyForm" class="bg-white p-4 rounded shadow">
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label>Sex at Birth</label>
+          <select name="sex" class="form-select" required>
+            <option value="">-- Select --</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>No answer</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label>Age</label>
+          <select name="age" class="form-select" required>
+            <option value="">-- Select --</option>
+            <option>19 and below</option>
+            <option>20-34</option>
+            <option>35-49</option>
+            <option>50-64</option>
+            <option>65 or higher</option>
+            <option>No answer</option>
+          </select>
+        </div>
+        <div class="col-md-6 mt-3">
+          <label>Date</label>
+          <input type="date" name="date" class="form-control" required id="surveyDate">
+        </div>
+        <div class="col-md-6 mt-3">
+          <label>Service Availed (Please specify)</label>
+          <input type="text" name="service_availed" class="form-control" required>
+        </div>
+        <div class="col-md-6 mt-3">
+          <label>External or Internal Services (Auto-filled)</label>
+          <input type="text" id="serviceAvailed" name="service_availed" class="form-control" readonly>
+        </div>
+      </div>
+
+      <select id="clientType" name="client_type" class="form-control" required>
+        <option value="">-- Select Client Type --</option>
+        <option value="Citizen">Citizen</option>
+        <option value="Business">Business</option>
+        <option value="Government">Government</option>
+      </select>
+
+      <div class="mb-3">
+        <label>CC1. Awareness of Citizen's Charter</label>
+        <select name="cc1" class="form-select" required>
+          <option value="">-- Select --</option>
+          <option>I know what a Citizen's Charter is and I saw the office's Citizen's Charter.</option>
+          <option>I know what a Citizen's Charter is but I did not see one in this office.</option>
+          <option>I learned of the Citizen's Charter only when I saw this office's Citizen's Charter.</option>
+          <option>I do not know what a Citizen's Charter is and I did not see one in this office.</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label>CC2. Visibility of Citizen's Charter</label>
+        <select name="cc2" class="form-select" required>
+          <option value="">-- Select --</option>
+          <option>Easy to see</option>
+          <option>Somewhat easy to see</option>
+          <option>Difficult to see</option>
+          <option>Not visible at all</option>
+          <option>N/A</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label>CC3. Helpfulness of Citizen's Charter</label>
+        <select name="cc3" class="form-select" required>
+          <option value="">-- Select --</option>
+          <option>Helped very much</option>
+          <option>Somewhat helped</option>
+          <option>Did not help</option>
+          <option>N/A</option>
+        </select>
+      </div>
+
+      <h5 class="mt-4">Service Quality Dimensions (0=N/A, 1-5 scale)</h5>
+      <div class="table-responsive mb-3">
+        <table class="table table-bordered table-sm">
+          <thead>
+            <tr>
+              <th>Question</th>
+              <th class="text-center">5</th>
+              <th class="text-center">4</th>
+              <th class="text-center">3</th>
+              <th class="text-center">2</th>
+              <th class="text-center">1</th>
+              <th class="text-center">0</th>
+            </tr>
+          </thead>
+          <tbody id="sqd-questions"></tbody>
+        </table>
+      </div>
+
+      <div class="d-grid">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+
+    <div id="stats" class="mt-5 bg-white p-4 rounded shadow d-none">
+      <div id="summary"></div>
+      <div id="detailedStats" class="mt-3"></div>
+      <button class="btn btn-secondary mt-3 no-print" onclick="window.print()">Print Report</button>
+      <button class="btn btn-danger mt-2 no-print" onclick="clearStats()">Clear All Responses</button>
+    </div>
+  </div>
+
+  <script>
+    const sqdQuestions = [
+      "I am satisfied with the service that I availed.",
+      "Employees were courteous and knowledgeable.",
+      "My transaction was completed in a reasonable time.",
+      "The service I received met my expectations.",
+      "I found the location/facility clean and orderly.",
+      "Clear information was provided.",
+      "I was treated fairly and respectfully.",
+      "Suggestions and feedback are welcomed.",
+      "Overall experience was good."
+    ];
+
+    const ccQuestions = [
+      { id: 'cc1', text: "Awareness of Citizen's Charter" },
+      { id: 'cc2', text: "Visibility of Citizen's Charter" },
+      { id: 'cc3', text: "Helpfulness of Citizen's Charter" }
+    ];
+
+    const tbody = document.getElementById("sqd-questions");
+    sqdQuestions.forEach((q, i) => {
+      let row = `<tr><td>SQD${i+1}. ${q}</td>`;
+      for (let v = 5; v >= 0; v--) {
+        row += `<td class='text-center'><input type='radio' name='sqd${i}' value='${v}' required></td>`;
+      }
+      row += "</tr>";
+      tbody.innerHTML += row;
+    });
+
+    const form = document.getElementById("surveyForm");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      let entry = {};
+      formData.forEach((value, key) => entry[key] = value);
+
+      const date = new Date(entry.date);
+      const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+
+      let allData = JSON.parse(localStorage.getItem("monthlySurveyRecords") || "{}");
+      if (!allData[monthKey]) allData[monthKey] = [];
+      allData[monthKey].push(entry);
+      localStorage.setItem("monthlySurveyRecords", JSON.stringify(allData));
+
+      alert("Survey submitted successfully!");
+      form.reset();
+      document.getElementById("surveyDate").value = new Date().toISOString().split('T')[0];
+      showStats();
+    });
+
+    function showStats() {
+  const allData = JSON.parse(localStorage.getItem("monthlySurveyRecords") || "{}");
+  const records = Object.values(allData).flat();
+  const total = records.length;
+
+  const summaryDiv = document.getElementById("summary");
+  const detailedDiv = document.getElementById("detailedStats");
+  document.getElementById("stats").classList.remove("d-none");
+
+  const getCountAndPercent = (list, value) => {
+    const count = list.filter(x => x === value).length;
+    const percent = total > 0 ? (count / total * 100).toFixed(2) : "0.00";
+    return { count, percent };
+  };
+
+ // === DEMOGRAPHIC PROFILE ===
+const sexValues = records.map(r => r.sex);
+const ageValues = records.map(r => r.age);
+const clientTypeValues = records.map(r => r.client_type);
+
+const sexOptions = ["Male", "Female", "No answer", "<b>Total Respondents</b>"];
+const ageOptions = ["19 and below", "20-34", "35-49", "50-64", "65 or higher", "No answer", "<b>Total Respondents</b>"];
+const clientTypeOptions = ["Citizen", "Business", "Government", "No answer", "<b>Total Respondents</b>"];
+
+function getExternalInternalCounts(values, category, clientTypeValues) {
+  let external = 0;
+  let internal = 0;
+
+  values.forEach((v, i) => {
+    if (v === category) {
+      if (clientTypeValues[i] === "Citizen" || clientTypeValues[i] === "Business") external++;
+      else if (clientTypeValues[i] === "Government") internal++;
+    }
+  });
+
+  return { external, internal };
+}
+
+function generateRows(options, values, label) {
+  const totalRespondents = records.length;
+
+  const totalExternal = records.filter((r, idx) => clientTypeValues[idx] === "Citizen" || clientTypeValues[idx] === "Business").length;
+  const totalInternal = records.filter((r, idx) => clientTypeValues[idx] === "Government").length;
+
+  let html = "";
+
+  options.forEach((opt, i) => {
+    let external = 0, internal = 0;
+    let externalPercent = "0.00%", internalPercent = "0.00%", totalPercent = "0.00%";
+
+    if (opt.includes("Total Respondents")) {
+      // Row for Total Respondents
+      external = totalExternal;
+      internal = totalInternal;
+
+      // Compute percentages correctly based on the actual count
+      externalPercent = totalRespondents > 0 ? ((external / totalRespondents) * 100).toFixed(2) + "%" : "0.00%";
+      internalPercent = totalRespondents > 0 ? ((internal / totalRespondents) * 100).toFixed(2) + "%" : "0.00%";
+
+      // If both External and Internal percentages are 100%, display 100% as total
+      totalPercent = (parseFloat(externalPercent) + parseFloat(internalPercent)) === 100 ? "100.00%" : (parseFloat(externalPercent) + parseFloat(internalPercent)).toFixed(2) + "%";
+    } else {
+      const { external: ext, internal: int } = getExternalInternalCounts(values, opt, clientTypeValues);
+      external = ext;
+      internal = int;
+
+      externalPercent = totalExternal > 0 ? ((external / totalExternal) * 100).toFixed(2) + "%" : "0.00%";
+      internalPercent = totalInternal > 0 ? ((internal / totalInternal) * 100).toFixed(2) + "%" : "0.00%";
+      totalPercent = totalRespondents > 0 ? (((external + internal) / totalRespondents) * 100).toFixed(2) + "%" : "0.00%";
+    }
+
+    const rowStyle = opt.includes("Total Respondents") ? 'style="background-color: #f89839;"' : "";
+
+    html += `<tr ${rowStyle}>
+      ${i === 0 ? `<td class="disaggregation-cell" rowspan="${options.length}">${label}</td>` : ""}
+      <td>${opt}</td>
+      <td>${external}</td>
+      <td>${externalPercent}</td>
+      <td>${internal}</td>
+      <td>${internalPercent}</td>
+      <td>${totalPercent}</td>
+    </tr>`;
+  });
+
+  return html;
+}
+
+let demographicProfile = `
+  <h5 class="mt-4" style="color: var(--black);">CSM DEMOGRAPHIC PROFILE OF RESPONDENTS</h5>
+  <table class="table table-bordered table-sm">
+    <thead class="orange-header text-white">
+      <tr>
+        <th>Disaggregation</th>
+        <th>Categories</th>
+        <th>External</th>
+        <th>%External</th>
+        <th>Internal</th>
+        <th>%Internal</th>
+        <th>%Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${generateRows(sexOptions, sexValues, "Sex at Birth")}
+      ${generateRows(ageOptions, ageValues, "Age")}
+      ${generateRows(clientTypeOptions, clientTypeValues, "Client Type")}
+    </tbody>
+  </table>
+`;
+
+
+
+
+  // === CC SECTION ===
+const cc1Options = [
+  "I know what a Citizen's Charter is and I saw the office's Citizen's Charter.",
+  "I know what a Citizen's Charter is but I did not see one in this office.",
+  "I learned of the Citizen's Charter only when I saw this office's Citizen's Charter.",
+  "I do not know what a Citizen's Charter is and I did not see one in this office."
+];
+
+const cc2Options = ["Easy to see", "Somewhat easy to see", "Difficult to see", "Not visible at all", "N/A"];
+const cc3Options = ["Helped very much", "Somewhat helped", "Did not help", "N/A"];
+
+const cc1Values = records.map(r => r.cc1);
+const cc2Values = records.map(r => cc1Options.slice(0, 3).includes(r.cc1) ? r.cc2 : "N/A");
+const cc3Values = records.map(r => cc1Options.slice(0, 3).includes(r.cc1) ? r.cc3 : "N/A");
+
+const totalCC1 = cc1Values.filter(v => v && v !== "").length;
+const totalCC2 = cc2Values.filter(v => v && v !== "" && v !== "N/A").length;
+const totalCC3 = cc3Values.filter(v => v && v !== "" && v !== "N/A").length;
+
+const ccTable = `
+  <h5>I. Awareness on the Citizen's Charter</h5>
+  <table class="table table-bordered table-sm">
+    <thead class="table-warning">
+      <tr><th colspan="2" class="section-header">CC1: Which of the following best describes your awareness of a CC?</th><th>Responses</th><th>%</th></tr>
+    </thead>
+    <tbody>
+      ${cc1Options.map(opt => {
+        const { count, percent } = getCountAndPercent(cc1Values, opt);
+        return `<tr><td colspan="2">${opt}</td><td>${count}</td><td>${percent}</td></tr>`;
+      }).join("")}
+      <tr class="fw-bold bg-light"><td colspan="2">Total</td><td>${totalCC1}</td><td>${totalCC1 > 0 ? "100%" : ""}</td></tr>
+    </tbody>
+
+    <thead class="table-warning mt-2">
+      <tr><th colspan="2" class="section-header">CC2: If aware of CC (answered 1-3 in CC1), how visible was it?</th><th>Responses</th><th>%</th></tr>
+    </thead>
+    <tbody>
+      ${cc2Options.map(opt => {
+        const { count, percent } = getCountAndPercent(cc2Values, opt);
+        return `<tr><td colspan="2">${opt}</td><td>${count}</td><td>${percent}</td></tr>`;
+      }).join("")}
+      <tr class="fw-bold bg-light"><td colspan="2">Total</td><td>${totalCC2}</td><td>${totalCC2 > 0 ? "100%" : ""}</td></tr>
+    </tbody>
+
+    <thead class="table-warning mt-2">
+      <tr><th colspan="2" class="section-header">CC3: If aware of CC (answered 1-3 in CC1), how helpful was it?</th><th>Responses</th><th>%</th></tr>
+    </thead>
+    <tbody>
+      ${cc3Options.map(opt => {
+        const { count, percent } = getCountAndPercent(cc3Values, opt);
+        return `<tr><td colspan="2">${opt}</td><td>${count}</td><td>${percent}</td></tr>`;
+      }).join("")}
+      <tr class="fw-bold bg-light"><td colspan="2">Total</td><td>${totalCC3}</td><td>${totalCC3 > 0 ? "100%" : ""}</td></tr>
+    </tbody>
+  </table>
+`;
+
+summaryDiv.innerHTML = `
+  <div id="demographicSection">
+    ${demographicProfile}
+  </div>
+  <div id="ccSection">
+    ${ccTable}
+  </div>
+`;
+
+
+ // === SQD TABLE ===
+const sqdScale = ["5", "4", "3", "2", "1", "0"];
+const scaleLabels = {
+  "5": "Strongly<br>Agree", "4": "Agree", "3": "Neither<br>Agree<br>/Disagree",
+  "2": "Disagree", "1": "Strongly<br>Disagree", "0": "N/A"
+};
+
+let sqdTable = `
+  <h5 class="mt-5">II. Service Quality Dimension (SQDs) </h5>
+  <table class="table table-bordered table-sm">
+    <thead class="table-warning text-center">
+  <tr>
+    <th></th>
+    ${sqdScale.map(s => `<th>${scaleLabels[s]}</th>`).join('')}
+    <th>Total<br>Respondents</th>
+    <th>Overall<br>%</th>
+  </tr>
+</thead>
+
+    <tbody>
+`;
+
+const sqdQuestions = [
+  "Overall Satisfaction",
+  "Responsiveness",
+  "Reliability",
+  "Access and Facilities",
+  "Communication",
+  "Cost",
+  "Integrity",
+  "Assurance",
+  "Outcome"
+];
+
+let totalOverall = 0;
+let validQuestions = 0;
+
+// Grand totals
+let grandTotalCounts = { "5": 0, "4": 0, "3": 0, "2": 0, "1": 0, "0": 0 };
+let grandTotalRespondents = 0;
+
+sqdQuestions.forEach((q, i) => {
+  let counts = { "5": 0, "4": 0, "3": 0, "2": 0, "1": 0, "0": 0 };
+  records.forEach(r => {
+    const val = r[`sqd${i}`];
+    if (val in counts) {
+      counts[val]++;
+    }
+  });
+
+  const stronglyAgree = counts["5"];
+  const agree = counts["4"];
+  const na = counts["0"];
+  const totalRespondents = Object.values(counts).reduce((a, b) => a + b, 0);
+  const effectiveTotal = totalRespondents - na;
+
+  const overall = effectiveTotal > 0
+    ? ((stronglyAgree + agree) / effectiveTotal * 100).toFixed(2)
+    : "0.00";
+
+  if (effectiveTotal > 0) {
+    totalOverall += parseFloat(overall);
+    validQuestions++;
+  }
+
+  for (let key in counts) {
+    grandTotalCounts[key] += counts[key];
+  }
+  grandTotalRespondents += totalRespondents;
+
+  sqdTable += `<tr><td>SQD${i}. ${q}</td>`;
+  sqdScale.forEach(score => {
+    sqdTable += `<td class="text-center">${counts[score]}</td>`;
+  });
+  sqdTable += `<td class="text-center">${totalRespondents}</td>`;
+
+  // Show Overall % and Satisfactory/Fair only in SQD0 and Total row
+  if (i === 0) {
+    sqdTable += `<td class="text-center" style="background-color: #fff134;">${overall}%</td>`;
+    sqdTable += `<td class="text-center" style="background-color: #fff134;"><span class="fw-bold">Satisfactory</span></td>`;
+  } else {
+    sqdTable += `<td class="text-center"></td>`;  // Blank for Overall %
+    sqdTable += `<td class="text-center"></td>`;  // Blank for Satisfactory/Fair label
+  }
+
+  // ✅ Insert blank row after SQD0 only
+  if (i === 0) {
+    sqdTable += `<tr>
+      ${Array(sqdScale.length + 3).fill(`<td style="background-color: #fbb065;">&nbsp;</td>`).join('')}
+    </tr>`;
+  }
+});
+
+// ✅ Insert TOTAL row with actual percentage in the last column
+const averageOverall = validQuestions > 0 ? (totalOverall / validQuestions).toFixed(2) : "0.00";
+
+// Calculate the label and background color for the total row
+const totalLabel = parseFloat(averageOverall) >= 95-100? 90-94.9? 80-89.9? 60-79.9? "Outstanding" :"Very Satisfactory" : "Satisfactory" : "Fair" : "Poor";
+const totalBgColor = parseFloat(averageOverall) >= 60 ? "#fff134" : "#f70808" ; // Yellow for satisfactory, light orange for fair
+
+sqdTable += `<tr class="fw-bold">
+  <td style="background-color: #fbb065;">Total</td>
+  ${sqdScale.map(score => `<td class="text-center" style="background-color: #fbb065;">${grandTotalCounts[score]}</td>`).join('')}
+  <td class="text-center" style="background-color: #fbb065;">${grandTotalRespondents}</td>
+  <td class="text-center" style="background-color: ${totalBgColor};">${averageOverall}%</td>
+  <td class="text-center" style="background-color: ${totalBgColor};"><span class="fw-bold">${totalLabel}</span></td>
+</tr>`;
+
+sqdTable += `</tbody></table>`;
+
+// Now insert all three sections into the page
+summaryDiv.innerHTML = `
+  <div id="demographicSection">
+    ${demographicProfile}
+  </div>
+  <div id="ccSection">
+    ${ccTable}
+  </div>
+  <div id="sqdSection">
+    ${sqdTable}
+  </div>
+`;
+
+
+
+
+}
+    function clearStats() {
+      
+  if (confirm("Are you sure you want to clear ALL responses? This cannot be undone.")) {
+    localStorage.removeItem("monthlySurveyRecords");
+    alert("All responses have been cleared.");
+    location.reload();
+  }
+}
+    window.addEventListener("load", () => {
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById("surveyDate").value = today;
+      showStats();
+    });
+    document.getElementById('clientType').addEventListener('change', function () {
+    const selected = this.value;
+    const serviceInput = document.getElementById('serviceAvailed');
+
+    if (selected === 'Citizen' || selected === 'Business') {
+      serviceInput.value = 'External';
+    } else if (selected === 'Government') {
+      serviceInput.value = 'Internal';
+    } else {
+      serviceInput.value = '';
+    }
+  });
+
+  </script>
+</body>
+</html>
