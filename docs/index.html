@@ -523,8 +523,8 @@ const cc2Values = records.map(r => cc1Options.slice(0, 3).includes(r.cc1) ? r.cc
 const cc3Values = records.map(r => cc1Options.slice(0, 3).includes(r.cc1) ? r.cc3 : "N/A");
 
 const totalCC1 = cc1Values.filter(v => v && v !== "").length;
-const totalCC2 = cc2Values.filter(v => v && v !== "" && v !== "N/A").length;
-const totalCC3 = cc3Values.filter(v => v && v !== "" && v !== "N/A").length;
+const totalCC2 = cc2Values.filter(v => v && v !== "").length;
+const totalCC3 = cc3Values.filter(v => v && v !== "").length;
 
 const ccTable = `
   <h5>I. Awareness on the Citizen's Charter</h5>
